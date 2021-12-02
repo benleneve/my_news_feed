@@ -50,9 +50,8 @@ Project installation requires Symfony CLI, Docker, Composer and Yarn
 
     symfony server:start -d
 
-8.) Create the Database and tables needed for the project
+8.) Update the database schema with the necessary tables
 
-    symfony console doctrine:database:create  
     symfony console doctrine:schema:update --force
 
 The project is available on http://127.0.0.1:8000/ and phpMyAdmin on http://127.0.0.1:8080/
