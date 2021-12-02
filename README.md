@@ -20,6 +20,8 @@ This project allows you to display news feed according to a specific theme.
 
 Follow the instruction below if you want to install my_news_feed project using Git.
 
+Project installation requires Symfony CLI, Docker, Composer and Yarn 
+
 1.) Clone the git repository using:
 
     git clone git@github.com:benleneve/my_news_feed.git my_news_feed
