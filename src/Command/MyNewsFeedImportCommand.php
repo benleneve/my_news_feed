@@ -16,10 +16,12 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class MyNewsFeedImportCommand extends Command
 {
+    private const ARGUMENT_SEARCH_TYPE = 'searchType';
+    private const ARGUMENT_NUMBER_MAX_OF_NEWS = 'numberMaxOfNews';
     private const OPTION_DRY_RUN = 'dry-run';
 
-    private const NUMBER_NEWS_DEFAULT = 10;
-    private const NUMBER_MAX_NEWS = 100;
+    private const NUMBER_NEWS_DEFAULT = 5;
+    private const NUMBER_MAX_NEWS = 20;
 
     private HttpClientInterface $client;
     private EntityManagerInterface $entityManager;
@@ -46,8 +48,16 @@ class MyNewsFeedImportCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('searchType', InputArgument::REQUIRED, 'Indicates the type of article to search')
-            ->addArgument('numberMaxOfNews', InputArgument::OPTIONAL, 'Indicates the number of articles to import')
+            ->addArgument(
+                self::ARGUMENT_SEARCH_TYPE,
+                InputArgument::REQUIRED,
+                'Indicates the type of article to search'
+            )
+            ->addArgument(
+                self::ARGUMENT_NUMBER_MAX_OF_NEWS,
+                InputArgument::OPTIONAL,
+                'Indicates the number of articles to import'
+            )
             ->addOption(
                 self::OPTION_DRY_RUN,
                 null,
@@ -66,8 +76,8 @@ class MyNewsFeedImportCommand extends Command
         }
 
         $numberNewsCreated = 0;
-        $searchType = $input->getArgument('searchType');
-        $numberMaxOfNews = $input->getArgument('numberMaxOfNews');
+        $searchType = $input->getArgument(self::ARGUMENT_SEARCH_TYPE);
+        $numberMaxOfNews = $input->getArgument(self::ARGUMENT_NUMBER_MAX_OF_NEWS);
 
         if ($searchType) {
             $io->note(sprintf('You passed an searchType argument: %s', $searchType));
