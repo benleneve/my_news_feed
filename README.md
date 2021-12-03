@@ -120,6 +120,8 @@ Return example GET /api/news/{id}
 
 ## Possibility of project improvements
 
+- Implementation of search bar and filters on the list of articles
+- Possibility to select favorite articles on the list and in the modal
 - Setting up an infinite scroll for the display of articles
 - Setting up a cron to import the articles 
 - Setting up a cron to delete articles older than 30 days
